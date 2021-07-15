@@ -6,8 +6,8 @@ import './frontend.scss';
 import { getFullLanguage, getFullTheme, getLanguage, getTheme, themeEnum } from './utils';
 
 const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
-    const [finalTheme, setFinalTheme] = useState(theme);
-    const language = getLanguage(lang);
+    const [finalTheme, setFinalTheme] = useState(theme || 'atomDark');
+    const language = getLanguage(lang || 'js');
     SyntaxHighlighter.registerLanguage(lang, language)
     return (
         <div className="syntax-highlighter-frontend">
@@ -20,7 +20,7 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
                     <label htmlFor="highlighter-theme">Theme:</label>
                     <select
                         id="highlighter-theme"
-                        value={theme}
+                        value={finalTheme}
                         onChange={e => setFinalTheme(e.target.value)}
                     >
                         {
@@ -32,8 +32,8 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
                 </p>
             </div>
             <div className="syntax-highlighter-frontend__highlighter">
-                <SyntaxHighlighter language={lang} style={getTheme(finalTheme)}>
-                    {code}
+                <SyntaxHighlighter language={lang || 'js'} style={getTheme(finalTheme)}>
+                    {code || ''}
                 </SyntaxHighlighter>
             </div>
         </div>

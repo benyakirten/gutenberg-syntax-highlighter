@@ -10,7 +10,6 @@ import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
 import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import python from "react-syntax-highlighter/dist/cjs/languages/prism/python";
-import django from "react-syntax-highlighter/dist/cjs/languages/prism/django";
 import graphql from "react-syntax-highlighter/dist/cjs/languages/prism/graphql";
 import php from "react-syntax-highlighter/dist/cjs/languages/prism/php";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
@@ -22,11 +21,10 @@ export const languageEnum = {
     2: 'ts',
     3: 'tsx',
     4: 'python',
-    5: 'django',
-    6: 'graphql',
-    7: 'php',
-    8: 'css',
-    9: 'scss'
+    5: 'graphql',
+    6: 'php',
+    7: 'css',
+    8: 'scss'
 };
 
 export const themeEnum = {
@@ -68,8 +66,6 @@ export const getFullLanguage = syntaxLang => {
             return 'React TypeScript';
         case 'python':
             return 'Python';
-        case 'django':
-            return 'Python (Django)';
         case 'php':
             return 'PHP';
         case 'graphql':
@@ -95,8 +91,6 @@ export const getLanguage = (syntaxLang) => {
             return tsx;
         case "python":
             return python;
-        case "django":
-            return django;
         case "php":
             return php;
         case "graphql":

@@ -22,8 +22,10 @@ Also, I planned on only using TypeScript for future React projects, but this doe
 * Add support to the topbar, not just the inspector controls
 * Make it look nicer
 * Add TypeScript support
+* Add translation/other language support
 * Make a sister block where the user can input the syntax
 * Make another sister block that interacts with a GraphQL backend to parse the language and effects (this is really a reach because it would be a lot of work)
 
 ## Changelog
 7/15/2021: First version
+7/15/2021: Somehow there are things I don't notice until I try it out. I was using a dev build and I forgot to provide backup data.
