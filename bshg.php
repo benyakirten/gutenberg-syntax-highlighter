@@ -34,6 +34,11 @@ class BenyakirsSyntaxHighlighter {
         }
         ob_start();
     ?>
+        <?php
+            foreach($attrs as $attr) {
+                echo "*" . $attr . "*";
+            }
+        ?>
         <div class="benyakir-syntax-highlighter">
             <pre style="display: none;"><?php echo wp_json_encode($attrs); ?></pre>
         </div>

@@ -18,6 +18,8 @@ import {
     getTheme,
     languageEnum,
     themeEnum,
+    encodeLang,
+    decodeLang
 } from './utils';
 
 const attributes = {
@@ -46,7 +48,10 @@ const edit = ({
     setAttributes,
 }) => {
     const setLang = (lang) => setAttributes({ lang });
-    const setCode = (code) => setAttributes({ code });
+    const setCode = (newCode) => {
+        console.log(newCode);
+        setAttributes({ code: encodeLang(newCode) })
+    };
     const setTheme = (theme) => setAttributes({ theme });
     const setShowPreview = (showPreview) => setAttributes({ showPreview });
     const language = getLanguage(lang);
@@ -94,7 +99,7 @@ const edit = ({
                         label='Code'
                         rows={10}
                         placeholder='Type and it will be highlighted below'
-                        value={code}
+                        value={decodeLang(code)}
                         onChange={setCode}
                     />
                 </div>
@@ -113,7 +118,7 @@ const edit = ({
                             language={lang}
                             style={finalTheme}
                         >
-                            {code}
+                            {decodeLang(code)}
                         </SyntaxHighlighter>
                     )}
                 </div>

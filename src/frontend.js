@@ -3,7 +3,14 @@ import ReactDom from 'react-dom';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 import './frontend.scss';
-import { getFullLanguage, getFullTheme, getLanguage, getTheme, themeEnum } from './utils';
+import {
+    getFullLanguage,
+    getFullTheme,
+    getLanguage,
+    getTheme,
+    themeEnum,
+    decodeLang
+} from './utils';
 
 const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
     const [finalTheme, setFinalTheme] = useState(theme || 'atomDark');
@@ -33,7 +40,7 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
             </div>
             <div className="syntax-highlighter-frontend__highlighter">
                 <SyntaxHighlighter language={lang || 'js'} style={getTheme(finalTheme)}>
-                    {code || ''}
+                    {decodeLang(code) || ''}
                 </SyntaxHighlighter>
             </div>
         </div>
@@ -43,6 +50,7 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
 const divsToUpdate = document.querySelectorAll('.benyakir-syntax-highlighter');
 divsToUpdate.forEach(div => {
     const data = JSON.parse(div.querySelector('pre').innerHTML);
+    console.log(data);
     ReactDom.render(<CustomSyntaxHighlighter {...data} />, div);
     div.classList.remove('benyakir-syntax-highlighter');
 });
