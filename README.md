@@ -30,3 +30,4 @@ Also, I planned on only using TypeScript for future React projects, but this doe
 7/15/2021: First version
 7/15/2021: Somehow there are things I don't notice until I try it out. I was using a dev build and I forgot to provide backup data.
 7/15/2021: I added custom encoding for angle brackets and arrow functions because everything was freaking out. There are probably better solutions, but I didn't want to bother with it.
+7/15/2021: This should be the last of the day. On the last update, it turns out I forgot to a global replace.

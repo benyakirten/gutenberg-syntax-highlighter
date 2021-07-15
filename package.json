@@ -1,6 +1,6 @@
 {
   "name": "benyakirs-syntax-highlight-gutenberg",
-  "version": "1.0.0",
+  "version": "1.0.1a",
   "description": "A Gutenberg block that will highlight syntax in several programming languages",
   "scripts": {
     "build": "wp-scripts build src/block.js src/frontend.js",

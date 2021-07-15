@@ -16,11 +16,19 @@ import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
 
 export const encodeLang = code => {
-    return code.replace("<", "__L_ANGLE_BRACKET__").replace(">", "__R_ANGLE_BRACKET__").replace("=>", "__JS_ARR_FUNC__");
+    return code
+        .replace(/</g, "__L_ANGLE_BRACKET__")
+        .replace(/>/g, "__R_ANGLE_BRACKET__")
+        .replace(/{/g, "__L_CURLY_BRACKET__")
+        .replace(/}/g, "__R_CURLY_BRACKET__")
 };
 
 export const decodeLang = code => {
-    return code.replace("__L_ANGLE_BRACKET__", "<").replace("__R_ANGLE_BRACKET__", ">").replace("__JS_ARR_FUNC__", "=>");
+    return code
+        .replace(/__L_ANGLE_BRACKET__/g, "<")
+        .replace(/__R_ANGLE_BRACKET__/g, ">")
+        .replace(/__L_CURLY_BRACKET__/g, "{")
+        .replace(/__R_CURLY_BRACKET__/g, "}")
 };
 
 export const languageEnum = {

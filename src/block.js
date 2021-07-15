@@ -48,10 +48,7 @@ const edit = ({
     setAttributes,
 }) => {
     const setLang = (lang) => setAttributes({ lang });
-    const setCode = (newCode) => {
-        console.log(newCode);
-        setAttributes({ code: encodeLang(newCode) })
-    };
+    const setCode = (newCode) => setAttributes({ code: encodeLang(newCode) });
     const setTheme = (theme) => setAttributes({ theme });
     const setShowPreview = (showPreview) => setAttributes({ showPreview });
     const language = getLanguage(lang);

@@ -50,7 +50,6 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
 const divsToUpdate = document.querySelectorAll('.benyakir-syntax-highlighter');
 divsToUpdate.forEach(div => {
     const data = JSON.parse(div.querySelector('pre').innerHTML);
-    console.log(data);
     ReactDom.render(<CustomSyntaxHighlighter {...data} />, div);
     div.classList.remove('benyakir-syntax-highlighter');
 });

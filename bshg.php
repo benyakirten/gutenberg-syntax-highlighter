@@ -3,7 +3,7 @@
 Plugin Name: Benyakir's Syntax Highlighter - Gutenberg Block Editor
 Plugin URI: https://github.com/benyakirten/gutenberg-syntax-highlighter
 Description: A Gutenberg block that will highlight syntax in several programming languages 
-Version: 1.0.0
+Version: 1.0.1a
 Author: Benyakir Horowitz
 Author URI: https://www.benyakiredits.com
 */
@@ -34,11 +34,6 @@ class BenyakirsSyntaxHighlighter {
         }
         ob_start();
     ?>
-        <?php
-            foreach($attrs as $attr) {
-                echo "*" . $attr . "*";
-            }
-        ?>
         <div class="benyakir-syntax-highlighter">
             <pre style="display: none;"><?php echo wp_json_encode($attrs); ?></pre>
         </div>
