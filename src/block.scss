@@ -1,0 +1,27 @@
+.syntax-highlighter-block {
+    &__block-control-group {
+        display: flex;
+        flex-direction: column;
+    }
+    &__controls {
+        border-bottom: 1px solid rgba(#000, 0.4);
+        &__text-area {
+            transition: all 0.4s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        
+    }
+    &__preview {
+        &__label {
+            font-size: 12px;
+        }
+        &__highlighter {
+            transition: all 0.4s;
+        }
+        &:hover > &__highlighter {
+            transform: scale(1.1);
+        }
+    }
+}

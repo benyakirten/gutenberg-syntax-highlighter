@@ -1,0 +1,15 @@
+{
+  "name": "benyakirs-syntax-highlight-gutenberg",
+  "version": "1.0.0",
+  "description": "A Gutenberg block that will highlight syntax in several programming languages",
+  "scripts": {
+    "build": "wp-scripts build src/block.js src/frontend.js",
+    "start": "wp-scripts start src/block.js src/frontend.js"
+  },
+  "author": "Benyakir Horowitz",
+  "license": "MIT",
+  "dependencies": {
+    "@wordpress/scripts": "^16.1.2",
+    "react-syntax-highlighter": "^15.4.3"
+  }
+}
