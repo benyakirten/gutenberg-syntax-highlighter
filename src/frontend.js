@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
+
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 
 import './frontend.scss';
 import {
@@ -13,9 +15,18 @@ import {
 } from './utils';
 
 const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
-    const [finalTheme, setFinalTheme] = useState(theme || 'atomDark');
-    const language = getLanguage(lang || 'js');
-    SyntaxHighlighter.registerLanguage(lang, language)
+    const [finalTheme, setFinalTheme] = useState(atomDark);
+    const language = getLanguage(lang || 'js').then(lang => SyntaxHighlighter.registerLanguage(lang, language));
+    useEffect(() => {
+        console.log('theme 1');
+        console.log(theme);
+        getTheme(theme).then(scheme => setFinalTheme(scheme));
+    }, []);
+    useEffect(() => {
+        console.log('theme 2');
+        console.log(theme);
+        getTheme(theme).then(scheme => setFinalTheme(scheme));
+    }, [theme])
     return (
         <div className="syntax-highlighter-frontend">
             <div className="syntax-highlighter-frontend__desc">
@@ -39,7 +50,7 @@ const CustomSyntaxHighlighter = ({ lang, code, theme }) => {
                 </p>
             </div>
             <div className="syntax-highlighter-frontend__highlighter">
-                <SyntaxHighlighter language={lang || 'js'} style={getTheme(finalTheme)}>
+                <SyntaxHighlighter language={lang || 'js'} style={finalTheme}>
                     {decodeLang(code) || ''}
                 </SyntaxHighlighter>
             </div>

@@ -2,7 +2,7 @@
 1. [What is this?](#what-is-this?)
 2. [How do I install it?](#how-do-i-install-it)
 5. [Planned Changes](#planned-changes)
-6. [Change Log](#change-log)
+6. [Changelog](#change-log)
 
 ## What is this?
 

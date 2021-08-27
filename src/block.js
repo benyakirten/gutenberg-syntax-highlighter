@@ -1,16 +1,19 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { useState, useEffect } from "react";
+
+import { registerBlockType } from "@wordpress/blocks";
 import {
     TextareaControl,
     SelectControl,
     CheckboxControl,
     PanelBody,
     PanelRow,
-} from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+} from "@wordpress/components";
+import { InspectorControls } from "@wordpress/block-editor";
 
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 
-import './block.scss';
+import "./block.scss";
 import {
     getFullLanguage,
     getFullTheme,
@@ -19,18 +22,18 @@ import {
     languageEnum,
     themeEnum,
     encodeLang,
-    decodeLang
-} from './utils';
+    decodeLang,
+} from "./utils";
 
 const attributes = {
-    lang: { type: 'string', default: 'js' },
-    code: { type: 'string', default: '' },
-    theme: { type: 'string', default: 'atomDark' },
-    showPreview: { type: 'boolean', default: true },
+    lang: { type: "string", default: "js" },
+    code: { type: "string", default: "" },
+    theme: { type: "string", default: "atomDark" },
+    showPreview: { type: "boolean", default: true },
 };
 const example = {
     attributes: {
-        lang: 'js',
+        lang: "js",
         code: `
         export const shuffleLongArray = arr => {
             for (let i = arr.length - 1; i > 0; i--) {
@@ -38,7 +41,7 @@ const example = {
               [arr[i], arr[j]] = [arr[j], arr[i]];
             }
         };`,
-        theme: 'atomDark',
+        theme: "atomDark",
         showPreview: true,
     },
 };
@@ -51,16 +54,27 @@ const edit = ({
     const setCode = (newCode) => setAttributes({ code: encodeLang(newCode) });
     const setTheme = (theme) => setAttributes({ theme });
     const setShowPreview = (showPreview) => setAttributes({ showPreview });
-    const language = getLanguage(lang);
-    const finalTheme = getTheme(theme);
-    SyntaxHighlighter.registerLanguage(lang, language);
+
+    const [finalTheme, setFinalTheme] = useState(atomDark);
+
+    useEffect(() => {
+        getTheme(theme).then((scheme) => {
+            setFinalTheme(scheme);
+        });
+    }, [theme]);
+
+    useEffect(() => {
+        getLanguage(lang).then((language) => {
+            SyntaxHighlighter.registerLanguage(lang, language);
+        });
+    }, [lang])
     return (
-        <section class='syntax-highlighter-block'>
+        <section class="syntax-highlighter-block">
             <InspectorControls>
-                <PanelBody title='Options' initialOpen>
+                <PanelBody title="Options" initialOpen>
                     <PanelRow>
                         <SelectControl
-                            label='Theme'
+                            label="Theme"
                             value={theme}
                             options={Object.values(themeEnum).map((t) => ({
                                 value: t,
@@ -71,7 +85,7 @@ const edit = ({
                     </PanelRow>
                     <PanelRow>
                         <SelectControl
-                            label='Language'
+                            label="Language"
                             value={lang}
                             options={Object.values(languageEnum).map((l) => ({
                                 value: l,
@@ -82,36 +96,36 @@ const edit = ({
                     </PanelRow>
                     <PanelRow>
                         <CheckboxControl
-                            label='Show Preview'
-                            help='Show a second panel of what the code will look like'
+                            label="Show Preview"
+                            help="Show a second panel of what the code will look like"
                             checked={showPreview}
                             onChange={setShowPreview}
                         />
                     </PanelRow>
                 </PanelBody>
             </InspectorControls>
-            <div class='syntax-highlighter-block__controls'>
-                <div className='syntax-highlighter-block__controls__text-area'>
+            <div class="syntax-highlighter-block__controls">
+                <div className="syntax-highlighter-block__controls__text-area">
                     <TextareaControl
-                        label='Code'
+                        label="Code"
                         rows={10}
-                        placeholder='Type and it will be highlighted below'
+                        placeholder="Type and it will be highlighted below"
                         value={decodeLang(code)}
                         onChange={setCode}
                     />
                 </div>
             </div>
-            <div class='syntax-highlighter-block__preview'>
+            <div class="syntax-highlighter-block__preview">
                 <label
-                    class='syntax-highlighter-block__preview__label'
-                    for='syntax-highlighter'
+                    class="syntax-highlighter-block__preview__label"
+                    for="syntax-highlighter"
                 >
                     Highlighted:
                 </label>
-                <div class='syntax-highlighter-block__preview__highlighter'>
+                <div class="syntax-highlighter-block__preview__highlighter">
                     {showPreview && code.length > 0 && (
                         <SyntaxHighlighter
-                            id='syntax-highlighter'
+                            id="syntax-highlighter"
                             language={lang}
                             style={finalTheme}
                         >
@@ -126,12 +140,12 @@ const edit = ({
 
 const save = () => null;
 
-registerBlockType('benyakirsplugins/syntax-highlighter', {
-    title: 'Programming Syntax Highlighter',
-    icon: 'desktop',
-    category: 'common',
+registerBlockType("benyakirsplugins/syntax-highlighter", {
+    title: "Programming Syntax Highlighter",
+    icon: "desktop",
+    category: "common",
     example,
-    description: 'Highlight syntax in a variety of programming languages',
+    description: "Highlight syntax in a variety of programming languages",
     attributes,
     edit,
     save,

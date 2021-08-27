@@ -1,19 +1,19 @@
-import prism from "react-syntax-highlighter/dist/cjs/styles/prism/prism";
-import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
-import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
-import materialDark from "react-syntax-highlighter/dist/cjs/styles/prism/material-dark";
-import duotoneSpace from "react-syntax-highlighter/dist/cjs/styles/prism/duotone-space";
-import duotoneLight from "react-syntax-highlighter/dist/cjs/styles/prism/duotone-light";
+// import prism from "react-syntax-highlighter/dist/cjs/styles/prism/prism";
+// import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
+// import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
+// import materialDark from "react-syntax-highlighter/dist/cjs/styles/prism/material-dark";
+// import duotoneSpace from "react-syntax-highlighter/dist/cjs/styles/prism/duotone-space";
+// import duotoneLight from "react-syntax-highlighter/dist/cjs/styles/prism/duotone-light";
 
-import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
-import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import python from "react-syntax-highlighter/dist/cjs/languages/prism/python";
-import graphql from "react-syntax-highlighter/dist/cjs/languages/prism/graphql";
-import php from "react-syntax-highlighter/dist/cjs/languages/prism/php";
-import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
-import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
+// import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+// import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+// import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
+// import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
+// import python from "react-syntax-highlighter/dist/cjs/languages/prism/python";
+// import graphql from "react-syntax-highlighter/dist/cjs/languages/prism/graphql";
+// import php from "react-syntax-highlighter/dist/cjs/languages/prism/php";
+// import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
+// import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
 
 export const encodeLang = code => {
     return code
@@ -95,46 +95,46 @@ export const getFullLanguage = syntaxLang => {
     }
 };
 
-export const getLanguage = (syntaxLang) => {
+export function getLanguage(syntaxLang) {
     switch (syntaxLang) {
         case "js":
-            return js;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/javascript");
         case "jsx":
-            return jsx;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/jsx");
         case "ts":
-            return ts;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/typescript");
         case "tsx":
-            return tsx;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/tsx");
         case "python":
-            return python;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/python");
         case "php":
-            return php;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/php");
         case "graphql":
-            return graphql;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/graphql");
         case "css":
-            return css;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/css");
         case "scss":
-            return scss;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/scss");
         default:
-            return js;
+            return import("react-syntax-highlighter/dist/cjs/languages/prism/javascript");
     }
 };
 
-export const getTheme = (theme) => {
+export function getTheme (theme) {
     switch (theme) {
         case "prism":
-            return prism;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/prism");
         case "darcula":
-            return darcula;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/darcula");
         case "materialDark":
-            return materialDark;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/material-dark");
         case "duotoneSpace":
-            return duotoneSpace;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/duotone-space");
         case "duotoneLight":
-            return duotoneLight;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/duotone-light");
         case "atomDark":
-            return atomDark;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/atom-dark");
         default:
-            return atomDark;
+            return import("react-syntax-highlighter/dist/cjs/styles/prism/atom-dark");
     }
 };

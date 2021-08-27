@@ -2,11 +2,16 @@
   "name": "benyakirs-syntax-highlight-gutenberg",
   "version": "1.0.1a",
   "description": "A Gutenberg block that will highlight syntax in several programming languages",
+  "homepage": "https://github.com/benyakirten/a-weeks-worth-backend",
   "scripts": {
     "build": "wp-scripts build src/block.js src/frontend.js",
     "start": "wp-scripts start src/block.js src/frontend.js"
   },
-  "author": "Benyakir Horowitz",
+  "author": {
+    "name" : "Benyakir Horowitz",
+    "email" : "benyakir.horowitz@gmail.com",
+    "url" : "https://benyakiredits.com"
+  },
   "license": "MIT",
   "dependencies": {
     "@wordpress/scripts": "^16.1.2",
