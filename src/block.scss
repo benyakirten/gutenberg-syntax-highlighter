@@ -10,11 +10,5 @@
         &__label {
             font-size: 12px;
         }
-        &__highlighter {
-            transition: all 0.4s;
-        }
-        &:hover > &__highlighter {
-            transform: scale(1.1);
-        }
     }
 }

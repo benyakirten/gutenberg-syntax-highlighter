@@ -16,6 +16,7 @@ import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
 import erlang from "react-syntax-highlighter/dist/cjs/languages/prism/erlang";
 import elixir from "react-syntax-highlighter/dist/cjs/languages/prism/elixir";
+import go from "react-syntax-highlighter/dist/cjs/languages/prism/go";
 
 export const encodeLang = code => {
     return code
@@ -43,8 +44,9 @@ export const languageEnum = {
     6: 'php',
     7: 'css',
     8: 'scss',
-    9: 'erl',
-    10: 'ex'
+    9: 'erlang',
+    10: 'elixir',
+    11: 'go'
 };
 
 export const themeEnum = {
@@ -94,10 +96,12 @@ export const getFullLanguage = syntaxLang => {
             return 'CSS';
         case 'scss':
             return 'SCSS';
-        case 'erl':
+        case 'erlang':
             return 'Erlang';
-        case 'ex':
+        case 'elixir':
             return 'Elixir';
+        case 'go':
+            return 'Golang'
         default:
             return syntaxLang;
     }
@@ -127,6 +131,8 @@ export const getLanguage = (syntaxLang) => {
             return erlang;
         case 'ex':
             return elixir;
+        case 'go':
+            return go;
         default:
             return js;
     }
