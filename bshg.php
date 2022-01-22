@@ -3,7 +3,7 @@
 Plugin Name: Benyakir's Syntax Highlighter - Gutenberg Block Editor
 Plugin URI: https://github.com/benyakirten/gutenberg-syntax-highlighter
 Description: A Gutenberg block that will highlight syntax in several programming languages 
-Version: 1.0.1a
+Version: 1.0.2
 Author: Benyakir Horowitz
 Author URI: https://www.benyakir-writes.com
 License: GPLv3
