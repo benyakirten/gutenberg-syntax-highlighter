@@ -5,7 +5,9 @@ Plugin URI: https://github.com/benyakirten/gutenberg-syntax-highlighter
 Description: A Gutenberg block that will highlight syntax in several programming languages 
 Version: 1.0.1a
 Author: Benyakir Horowitz
-Author URI: https://www.benyakiredits.com
+Author URI: https://www.benyakir-writes.com
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

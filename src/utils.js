@@ -14,6 +14,8 @@ import graphql from "react-syntax-highlighter/dist/cjs/languages/prism/graphql";
 import php from "react-syntax-highlighter/dist/cjs/languages/prism/php";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import scss from "react-syntax-highlighter/dist/cjs/languages/prism/scss";
+import erlang from "react-syntax-highlighter/dist/cjs/languages/prism/erlang";
+import elixir from "react-syntax-highlighter/dist/cjs/languages/prism/elixir";
 
 export const encodeLang = code => {
     return code
@@ -40,7 +42,9 @@ export const languageEnum = {
     5: 'graphql',
     6: 'php',
     7: 'css',
-    8: 'scss'
+    8: 'scss',
+    9: 'erl',
+    10: 'ex'
 };
 
 export const themeEnum = {
@@ -90,8 +94,12 @@ export const getFullLanguage = syntaxLang => {
             return 'CSS';
         case 'scss':
             return 'SCSS';
+        case 'erl':
+            return 'Erlang';
+        case 'ex':
+            return 'Elixir';
         default:
-            return 'JavaScript';
+            return syntaxLang;
     }
 };
 
@@ -115,6 +123,10 @@ export const getLanguage = (syntaxLang) => {
             return css;
         case "scss":
             return scss;
+        case 'erl':
+            return erlang;
+        case 'ex':
+            return elixir;
         default:
             return js;
     }
